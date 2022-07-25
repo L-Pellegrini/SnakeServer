@@ -3,12 +3,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>it.uniroma3.spring.snake</groupId>
+	<groupId>it.l-pellegrini.snake</groupId>
 	<artifactId>SnakeServer</artifactId>
 	<version>0.0.5</version>
 
-	<name>SnakeServerDemo</name>
-	<description>Demo project for Spring Boot</description>
+	<name>SnakeServer</name>
+	<description>Web platform for Snake Reborn</description>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
