@@ -5,7 +5,7 @@
 
 	<groupId>it.l-pellegrini.snake</groupId>
 	<artifactId>SnakeServer</artifactId>
-	<version>0.0.5</version>
+	<version>0.5.0</version>
 
 	<name>SnakeServer</name>
 	<description>Web platform for Snake Reborn</description>
