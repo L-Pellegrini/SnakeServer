@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/2/w3.css" />
+		<link rel="stylesheet" href="stile.css" />
+		<title>Modifica Profilo</title>
+	</head>
+
+	<body>
+	<div class="w3-container w3-teal">
+		<h1 align="center">
+			<img class="immagineGrossa" src="SnakeReborn.png" alt="logo" />
+		</h1>
+		
+		<h2 class="testoGrande"> 
+			<strong><label for="editProfile">Modifica profilo:</label></strong> 
+		</h2>
+
+		<form action="#" th:action="@{edit}" th:object="${user}" method="post">
+			<div align="center">
+				<table class="testoPiccolo">
+					<tbody>
+						<tr>
+							<td style="text-align: right;">
+								<label for="username">Nome Utente:</label>
+							</td>
+							<td>
+								<input class="campoTesto" name="username" size="20" autofocus="autofocus" type="text" 
+								th:value="${user.username}" th:field="*{username}" /> 
+							</td>
+						</tr>
+						<tr><td colspan="2" style="text-align: center">
+								<span th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Errore</span>
+							</td> </tr>
+						<tr>
+							<td style="text-align: right;">
+								<label for="email">E-mail:</label>
+							</td>
+							<td>
+								<input class="campoTesto" name="email" size="20" autofocus="autofocus" type="text" 
+								th:value="${user.email}" th:field="*{email}" /> 
+							</td>
+						</tr>
+						<tr><td colspan="2" style="text-align: center">
+								<span th:if="${#fields.hasErrors('email')}" th:errors="*{email}">Errore</span>
+							</td> </tr>
+						<tr>
+							<td style="text-align: center;">
+								<label for="newPassword">Nuova Password:</label>
+							</td>
+							<td>
+								<input class="campoTesto" name="password" size="20" placeholder="password" type="text" />
+							</td>
+						</tr>
+						<tr><td colspan="2" style="text-align: center">
+								<span th:if="${#fields.hasErrors('password')}" th:errors="*{password}">Errore</span>
+							</td> </tr>
+					</tbody>
+				</table>
+				<p>
+					<input class="pulsanteVerde" th:value="#{label.forward}" type="submit" />&nbsp;
+					<input class="pulsanteGiallo" th:value="#{label.restore}" type="reset" />&nbsp; 
+					<input class="pulsanteRosso" th:value="#{label.back}" type="submit" formaction="profile" />
+				</p>
+			</div>
+		</form>	
+	</div>
+	</body>
+</html>

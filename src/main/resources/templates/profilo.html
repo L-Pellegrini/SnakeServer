@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/2/w3.css" />
+		<link rel="stylesheet" href="stile.css" />
+		<title>Home Page Profilo</title>
+	</head>
+
+	<body>
+	<div class="w3-container w3-teal">
+		<h1 align="center">
+			<img class="immagineGrossa" src="SnakeReborn.png" alt="logo" />
+		</h1>
+
+		<h2> 
+			<strong><label for="profile">Profilo:</label> 
+			<span th:text="${user.username}">Nome utente</span></strong> 
+		</h2>
+		<h3 class="testoGrandeRosso">
+			<strong><label for="rank">Classifica top 10</label></strong> 
+		</h3>
+		<div align="center">
+		<table class="tabellaSparsa">
+		<tbody class="testoPiccolo">
+			<tr>
+				<th> <label for="position">Posizione</label> </th>
+				<th> <label for="username">Username</label> </th>
+				<th> <label for="score">Punteggio</label> </th>
+				<th> <label for="kills">Uccisioni</label> </th>
+				<th> <label for="time">Tempo</label> </th>
+			</tr>
+			<tr th:each="match : ${topTen}">
+				<td style="text-align: center;">
+					<span th:text="${match != null} ? ${match.position}"></span>
+				</td>
+				<td style="text-align: center;">
+					<span th:text="${match != null} ? ${match.player.username}"></span>
+				</td>
+				<td style="text-align: center;">
+					<span th:text="${match != null} ? ${match.score}"></span>
+				</td>
+				<td style="text-align: center;">
+					<span th:text="${match != null} ? ${match.kills}"></span>
+				</td>
+				<td style="text-align: center;">
+					<span th:text="${match != null} ? ${match.playingTime}"></span>
+				</td>
+			</tr>
+			<tr>
+				<td style="text-align: center;">
+					<span th:text="${bestOfUser != null} ? ${bestOfUser.position}"></span>
+				</td>
+				<td style="text-align: center;">
+					<span th:text="${bestOfUser != null} ? ${bestOfUser.player.username}"></span>
+				</td>
+				<td style="text-align: center;">
+					<span th:text="${bestOfUser != null} ? ${bestOfUser.score}"></span>
+				</td>
+				<td style="text-align: center;">
+					<span th:text="${bestOfUser != null} ? ${bestOfUser.kills}"></span>
+				</td>
+				<td style="text-align: center;">
+					<span th:text="${bestOfUser != null} ? ${bestOfUser.playingTime}"></span>
+				</td>
+			</tr>
+			</tbody>
+			</table>
+			</div>	
+		<form method="get">
+			<input class="pulsanteRosso" th:value="#{label.deleteProfile}" type="submit" formaction="delete" />
+			<input class="pulsanteGiallo" th:value="#{label.editProfile}" type="submit" formaction="edit" />
+			<input class="pulsanteVerde" th:value="#{label.exit}" type="submit" formaction="logout" />
+		</form>
+		<p>
+			<a href="https://github.com/Luke460/Snake-Reborn/releases">
+				<img class="immaginePiccola" src="demo.gif" alt="demo" />
+			</a>
+		</p>
+		<p>
+			<a class="link" href="https://github.com/Luke460/Snake-Reborn/releases">
+				<label for="downloadGame">Scarica il gioco</label>
+			</a>
+		</p>
+	</div>
+	</body>
+</html>

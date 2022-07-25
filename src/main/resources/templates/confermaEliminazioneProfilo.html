@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/2/w3.css" />
+		<link rel="stylesheet" href="stile.css" />
+		<title>Conferma eliminazione profilo</title>
+	</head>
+
+	<body>
+	<div class="w3-container w3-teal">
+		<h1 align="center">
+			<img class="immagineGrossa" src="SnakeReborn.png" alt="logo" />
+		</h1>
+
+		<h2> 
+			<strong><span th:text="#{label.deleteProfileConfirm} + ' ' + ${user.username} + '?'">Eliminare il profilo?</span></strong> 
+		</h2>
+		<div align="center">
+			<form method="post">
+				<input class="pulsanteRosso" th:value="#{label.confirm}" type="submit" formaction="delete" />&nbsp; 
+				<input class="pulsanteVerde" th:value="#{label.back}" type="submit" formaction="profile" />
+			</form>
+		</div>
+	</div>
+	</body>
+</html>

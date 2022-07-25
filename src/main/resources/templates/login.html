@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/2/w3.css" />
+		<link rel="stylesheet" href="stile.css" />
+		<title>Login</title>
+	</head>
+	<body>
+	<div class="w3-container w3-teal">
+		<div class="w3-container w3-teal">
+			<h1 align="center">
+				<img class="immagineGrossa" src="SnakeReborn.png" alt="logo" />
+			</h1>
+		
+			<h2> 
+				<strong>Login:</strong> 
+			</h2>
+
+			<form method="post">
+				<div align="center">
+					<table class="testoPiccolo">
+						<tbody>
+							<tr>
+								<td style="text-align: right;">
+									<label for="username">Nome utente:</label>
+								</td>
+								<td>
+								<input class="campoTesto" name="username" autofocus="autofocus" type="text" 
+								th:value="${user != null} ? ${user.username}" /> 
+
+								</td>
+							</tr>
+							<tr> <td colspan="2" style="text-align: center">
+								<div th:if="${param.error}" class="alert alert-error"> 
+                    				<span th:text="#{label.errUsername}">errUsername</span>
+               					</div>
+							</td> </tr>
+							<tr>
+								<td style="text-align: right;">
+									<label for="password">Password:</label>
+								</td>
+								<td>
+									<input class="campoTesto" name="password" size="20" placeholder="******" type="password" />
+								</td>
+							</tr>
+							<tr> <td colspan="2" style="text-align: center">
+								<div th:if="${param.error}" class="alert alert-error"> 
+                    				<span th:text="#{label.errPassword}">errUsername</span>
+               					 </div>
+							</td> </tr>
+						</tbody>
+					</table>
+					<p>
+						<input class="pulsanteVerde" th:value="#{label.login}" type="submit" formaction="login" />&nbsp; 
+						<input class="pulsanteRosso" th:value="#{label.register}" type="submit" formaction="register" />
+					</p>
+				</div>
+			</form>
+			<p>
+				<a href="https://github.com/Luke460/Snake-Reborn/releases">
+				<img class="immaginePiccola" src="demo.gif" alt="demo" />
+				</a>
+			</p>
+			<p>
+			<a class="link" href="https://github.com/Luke460/Snake-Reborn/releases">
+				<label for="downloadGame">Scarica il gioco</label>
+			</a>
+			</p>
+		</div>
+	</div>
+	</body>
+</html>

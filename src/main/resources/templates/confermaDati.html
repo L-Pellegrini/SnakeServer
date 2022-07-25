@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="it" xmlns:th="http://www.thymeleaf.org" xmlns:tiles="http://www.thymeleaf.org">
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/2/w3.css" />
+		<link rel="stylesheet" href="stile.css" />
+		<title>Conferma Dati</title>
+	</head>
+
+	<body>
+	<div class="w3-container w3-teal">
+		<h1 align="center">
+			<img class="immagineGrossa" src="SnakeReborn.png" alt="logo" />
+		</h1>
+		<h2> 
+			<strong><label for="insertData">Dati inseriti:</label></strong> 
+		</h2>
+			<div align="center">
+				<table>
+					<tbody class="testoPiccolo">
+						<tr>
+							<td class="testo" style="text-align: right;">
+								<label for="username">Nome utente:</label>
+							</td>
+							<td class="testo">
+								<p th:text="${user.username}" />
+							</td>
+						</tr>
+						<tr>
+							<td class="testo" style="text-align: right;">
+								<label for="email">E-mail:</label>
+							</td>
+							<td class="testo">
+								<p th:text="${user.email}" />
+							</td>
+						</tr>
+						<tr>
+							<td class="testo" style="text-align: right;">
+								<label for="password">Password:</label>
+							</td>
+							<td class="testo">
+								<p th:text="${user.password}" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<form method="post">
+					<input class="pulsanteVerde" th:value="#{label.confirm}" type="submit" formaction="user" />&nbsp; 
+					<input class="pulsanteRosso" th:value="#{label.back}" type="submit" formaction="backToRegister" />
+				</form>
+			</div>
+	</div>
+	</body>
+</html>
