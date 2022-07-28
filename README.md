@@ -15,5 +15,39 @@ To build your development environment you'll need:
   - The credentials for connecting to the dbms are specified in src/main/resources/application.properties, along with the database url
   - Make sure that the dbms contains a database with the same name as specified in the url. The database can be empty, since the code will create all the required data automatically
 
+You can run the webapp inside the IDE for debugging. It will use an integrated server listening on the port specified under server.port in application.properties file.
+
 DEPLOY:\
-//todo
+This webapp can be deployed to an instance of Tomcat using the tomcat7 for maven plugin.
+This plugin supports Tomcat7 or Tomcat8. Versions of Tomcat above 8 will not work.
+You must specify the tomcat server to which upload the war file in the maven config file %USER_DIR%\.m2\settings.xml
+This is a sample of the configuration:
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 https://maven.apache.org/xsd/settings-1.0.0.xsd">
+	<servers>
+		<server>
+			<id>TomcatServer</id>
+			<username>user-with-manager-script-role</username>
+			<password>pwd</password>
+		</server>
+	</servers>
+</settings>
+
+Note that Tomcat users must be configured properly. The config file is <tomcat-install-dir>\conf\tomcat-users.xml
+A good configuration could be the following:
+
+<tomcat-users xmlns="http://tomcat.apache.org/xml"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://tomcat.apache.org/xml tomcat-users.xsd"
+              version="1.0">
+<role rolename="manager-gui"/>
+<role rolename="manager-script"/>
+<user username="admin" password="pwd1" roles="manager-gui" />
+<user username="admin-script" password="pwd2" roles="manager-script" />
+</tomcat-users>
+
+It is necessary to change the max file size you can upload during the deploy operation. This can be done in <tomcat-install-dir>\webapps\manager\WEB-INF\web.xml. This info is specified under <multipart-config> element.
+
+If you want to deploy from a remote ip (other than localhost), you must tell Tomcat to allow connections from other ips.
+Go to file <tomcat-install-dir>\manager\META-INF\context.xml and modify the <Valve> element. If allowing connections from any ip is ok, you can comment/remove the entire element.
