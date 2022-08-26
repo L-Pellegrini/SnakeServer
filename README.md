@@ -17,6 +17,9 @@ To build your development environment you'll need:
 
 You can run the webapp inside the IDE for debugging. It will use an integrated server listening on the port specified under server.port in application.properties file.
 
+You can use development-specific configurations using the application-dev.properites file.
+When building project activating the dev sping profile, this file will be used. If you don't activate anything, this one is the default.
+
 DEPLOY:\
 This webapp can be deployed to an instance of Tomcat using the tomcat7 for maven plugin.
 This plugin supports Tomcat7 or Tomcat8. Versions of Tomcat above 8 will not work.
@@ -53,3 +56,5 @@ If you want to deploy from a remote ip (other than localhost), you must tell Tom
 Go to file <tomcat-install-dir>\manager\META-INF\context.xml and modify the <Valve> element. If allowing connections from any ip is ok, you can comment/remove the entire element.
 
 In the pom.xml file you have to adjsut the tomcat7 plugin configuration to point at the desired target: server url, server identifier (same as %USER_DIR%\.m2\settings.xml maven conf file) and the final web path.
+
+To launch the deployment process, use the maven command "tomcat7:redeploy -Pprod". This will activate the prod spring profile, so project will be built using the production configurations. These can be specified in the application-prod.properties file.

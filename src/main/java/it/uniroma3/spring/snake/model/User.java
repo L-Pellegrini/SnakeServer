@@ -43,6 +43,9 @@ public class User {
 	private Integer highScore;
 	private Long playTime;
 	private Integer kills;
+	private String rank;
+	private Integer elo;
+	private Boolean promo;
 	@OneToMany(mappedBy = "player", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
 	private List<Match> matches;
 	@ManyToOne
@@ -55,6 +58,7 @@ public class User {
 		highScore = 0;
 		playTime = Long.valueOf(0);
 		kills = 0;
+		promo = false;
 	}
 	
 	public boolean checkPassword(String password) {
@@ -123,6 +127,24 @@ public class User {
 	}
 	public void setKills(int kills) {
 		this.kills = kills;
+	}
+	public String getRank() {
+		return rank;
+	}
+	public void setRank(String rank) {
+		this.rank = rank;
+	}
+	public int getElo() {
+		return elo;
+	}
+	public void setElo(int elo) {
+		this.elo = elo;
+	}
+	public Boolean getPromo() {
+		return promo;
+	}
+	public void setPromo(Boolean promo) {
+		this.promo = promo;
 	}
 	public List<Match> getMatches() {
 		return matches;
